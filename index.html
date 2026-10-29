@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora de Inversión</title>
 
+<style>
+body{
+font-family:Arial;
+max-width:600px;
+margin:auto;
+padding:20px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:5px;
+}
+
+button{
+padding:10px;
+background:#4CAF50;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.resultado{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Calculadora de Inversión</h1>
+
+<label>Capital Inicial</label>
+<input id="capital" type="number">
+
+<label>Aporte Mensual</label>
+<input id="aporte" type="number">
+
+<label>Rendimiento Anual (%)</label>
+<input id="rendimiento" type="number">
+
+<label>Años</label>
+<input id="anios" type="number">
+
+<br><br>
+
+<button onclick="calcular()">
+Calcular
+</button>
+
+<div class="resultado" id="resultado"></div>
+
+<script>
+
+function calcular(){
+
+let capital =
+parseFloat(document.getElementById("capital").value);
+
+let aporte =
+parseFloat(document.getElementById("aporte").value);
+
+let rendimiento =
+parseFloat(document.getElementById("rendimiento").value)/100;
+
+let anios =
+parseFloat(document.getElementById("anios").value);
+
+let meses = anios * 12;
+
+let saldo = capital;
+
+for(let i=0;i<meses;i++){
+
+saldo += aporte;
+
+saldo *= (1 + rendimiento/12);
+
+}
+
+document.getElementById("resultado").innerHTML =
+
+"Valor Final: $" +
+saldo.toFixed(2);
+
+}
+
+</script>
+
+</body>
+</html>
